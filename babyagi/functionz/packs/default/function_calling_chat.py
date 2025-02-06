@@ -138,8 +138,8 @@ def chat_with_functions(chat_history, available_function_names) -> str:
             except Exception as e:
                 function_response = f"Error executing function '{function_name}': {str(e)}"
             
-            # If the function name is process_ta, return the function response (jinyuan)
-            if function_name == 'process_ta':
+            # If the function name is process_ta_chart, return the function response (jinyuan)
+            if function_name == 'process_ta_chart':
                 return function_response
 
             # Ensure function_response is a string
