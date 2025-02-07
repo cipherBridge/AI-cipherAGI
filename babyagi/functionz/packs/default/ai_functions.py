@@ -11,7 +11,15 @@ def gpt_call(prompt: str) -> str:
     from litellm import completion
     messages = [{"role": "user", "content": prompt}]
     response = completion(model="gpt-4o", messages=messages)
-    return response['choices'][0]['message']['content']
+    ret = response['choices'][0]['message']['content']
+
+    # Clean up the response to make it JSON loadable clean the fucking markdown
+    ret = ret.strip()
+    if ret.startswith("```json"):
+        ret = ret[7:]  # Remove ```json prefix
+    if ret.endswith("```"):
+        ret = ret[:-3]  
+    return ret
 
 @func.register_function(
     metadata={"description": "Generates a description for a function using LiteLLm"},
