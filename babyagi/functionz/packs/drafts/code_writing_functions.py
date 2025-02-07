@@ -25,12 +25,14 @@ Below is a list of available functions with their descriptions:
 
 {function_descriptions}
 
-Determine if any of the existing functions perfectly fulfill the user's request. If so, return the name of the function.
+Determine if any of the existing functions perfectly fulfill the user's request. If so, return the name of the function. if not perfectly match, return the a list of existing functions that can be used in creating the function.
+
 
 Provide your answer in the following JSON format:
 {{
   "function_found": true or false,
-  "function_name": "<name of the function if found, else null>"
+  "function_name": "<name of the function if found, else null>",
+  "bedrock_function_names": "<list of existing functions that can be used in creating the function, else null>"
 }}
 
 Examples:
