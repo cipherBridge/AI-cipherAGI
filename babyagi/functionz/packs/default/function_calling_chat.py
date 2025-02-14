@@ -154,9 +154,14 @@ def chat_with_functions(chat_history, available_function_names) -> str:
                 "content": function_response
             })
 
-        print(chat_context)
-        print(type(chat_context))
-        return chat_context
+        # print(chat_context)
+        # print(type(chat_context))
+        # return chat_context
+
+        chat_context.append({
+            "role": "user",
+            "content": "According to the chat history, output a summary of the results of executing the user task(the first chat message).",
+        })
 
         # Call LiteLLM again with the updated context including function responses
         second_response = litellm.completion(
