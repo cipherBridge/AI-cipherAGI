@@ -154,6 +154,9 @@ def chat_with_functions(chat_history, available_function_names) -> str:
                 "content": function_response
             })
 
+        print(chat_context)
+        print(type(chat_context))
+
         # Call LiteLLM again with the updated context including function responses
         second_response = litellm.completion(
             model="gpt-4-turbo",
